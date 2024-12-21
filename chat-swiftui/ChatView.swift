@@ -10,6 +10,8 @@ import SwiftUI
 struct ChatView: View {
     var body: some View {
         VStack(spacing:0) {
+            
+            
             // Message Area
             ScrollView {
                 VStack(spacing:0) {
@@ -21,7 +23,21 @@ struct ChatView: View {
                     }
                 }.padding(.horizontal)
                     .padding(.top, 72)
-            }.background(.cyan)
+            }.background(.cyan).overlay(
+                // Navigation Area
+                HStack {
+                    Circle().frame(width: 40, height: 40)
+                    Text("タイトル")
+                    Spacer()
+                    Circle().frame(width: 40, height: 40)
+                    Circle().frame(width: 40, height: 40)
+                    Circle().frame(width: 40, height: 40)
+                }
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(.black.opacity(0.5))
+                , alignment: .top
+            )
             
             // Input Area
             HStack {
