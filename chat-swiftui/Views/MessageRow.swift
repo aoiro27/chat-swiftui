@@ -27,15 +27,16 @@ struct MessageRow: View {
 
 extension MessageRow {
     private var userThumb : some View {
-        Image(systemName: "person.circle")
+        Image( "P5_futaba")
             .resizable()
             .frame(width: 40, height: 40)
+            .clipShape(Circle())
     }
     
     private var messageText : some View {
         Text("Hello World")
              .padding()
-             .background(Color.white)
+             .background(.white)
              .cornerRadius(30)
     }
     
