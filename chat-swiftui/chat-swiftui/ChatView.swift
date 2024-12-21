@@ -22,6 +22,16 @@ struct ChatView: View {
                 }.padding(.horizontal)
                     .padding(.top, 72)
             }.background(.cyan)
+            
+            // Input Area
+            HStack {
+                Circle().frame(width: 40, height: 40).foregroundColor(.red)
+                Circle().frame(width: 40, height: 40).foregroundColor(.red)
+                Circle().frame(width: 40, height: 40).foregroundColor(.red)
+                Capsule().frame(height: 40).foregroundColor(.blue)
+                Circle().frame(width: 40, height: 40).foregroundColor(.red)
+            }.background(.white)
+                .padding()
         }
     }
 }
