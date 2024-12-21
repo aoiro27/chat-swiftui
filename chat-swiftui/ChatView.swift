@@ -14,6 +14,8 @@ struct ChatView: View {
             // Message Area
             messageArea
             
+            // Navigation Area
+                .overlay(navigationArea, alignment: .top)
             // Input Area
             inputArea
         }
@@ -37,9 +39,7 @@ extension ChatView {
                 }
             }.padding(.horizontal)
                 .padding(.top, 72)
-        }.background(.cyan).overlay(
-            navigationArea, alignment: .top
-        )
+        }.background(.cyan)
     }
     
     private var inputArea: some View {
@@ -64,9 +64,9 @@ extension ChatView {
             Circle().frame(width: 40, height: 40)
             Circle().frame(width: 40, height: 40)
         }
-            .foregroundColor(.white)
-            .padding()
-            .background(.black.opacity(0.5))
+        .foregroundColor(.white)
+        .padding()
+        .background(.black.opacity(0.5))
     }
     
 }
