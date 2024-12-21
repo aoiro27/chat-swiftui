@@ -16,6 +16,7 @@ struct ChatView: View {
             
             // Navigation Area
                 .overlay(navigationArea, alignment: .top)
+            
             // Input Area
             inputArea
         }
@@ -32,10 +33,7 @@ extension ChatView {
         ScrollView {
             VStack(spacing:0) {
                 ForEach(0..<20) { _ in
-                    HStack {
-                        Circle().frame(width: 60, height: 60).foregroundColor(.red)
-                        Capsule().frame(height: 60).foregroundColor(.blue)
-                    }.padding(.bottom)
+                    MessageRow()
                 }
             }.padding(.horizontal)
                 .padding(.top, 72)
