@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ChatView: View {
     
-    let vm: ChatViewModel = ChatViewModel()
+    @ObservedObject
+    var vm: ChatViewModel = ChatViewModel()
     
     @State private var textFieldText: String = ""
     var body: some View {
@@ -88,7 +89,7 @@ extension ChatView {
     }
     
     private func sendMessage(text: String){
-        vm.addMessage(text)
+        vm.addMessage(text: text)
     }
     
 }

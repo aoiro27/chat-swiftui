@@ -7,10 +7,10 @@
 
 import Foundation
 
-class ChatViewModel {
+class ChatViewModel : ObservableObject{
     
     var chatData: [Chat] = []
-    var messages: [Message] = []
+    @Published var messages: [Message] = []
     
     init() {
         chatData = fetchChatData()
@@ -39,10 +39,10 @@ class ChatViewModel {
         let newMessage = Message(
             id: UUID().uuidString,
             text: text,
-            user: User(id: <#T##String#>, name: <#T##String#>, image: <#T##String#>),
-            date: Date(),
+            user: User.currentUser,
+            date: Date().description,
             readed: false)
-        
+        messages.append(newMessage)
     }
     
 }
