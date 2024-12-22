@@ -26,6 +26,10 @@ struct ChatView: View {
             inputArea
         }
     }
+    
+    @FocusState
+    private var textFieldFocused: Bool
+    
 }
 
 #Preview {
@@ -41,9 +45,15 @@ extension ChatView {
                 ForEach(vm.messages) { message in
                     MessageRow(message: message)
                 }
-            }.padding(.horizontal)
-                .padding(.top, 72)
-        }.background(Color("Background"))
+            }
+            .padding(.horizontal)
+            .padding(.top, 72)
+        }
+        .background(Color("Background"))
+        .onTapGesture {
+            print("onTapGesture")
+            textFieldFocused = false
+        }
     }
     
     private var inputArea: some View {
@@ -61,8 +71,9 @@ extension ChatView {
                 .clipShape(Capsule())
                 .overlay(Image(systemName: "face.smiling").font(.title2).padding(.trailing).foregroundColor(.gray), alignment: .trailing)
                 .onSubmit {
-                    sendMessage(text: textFieldText)
+                    sendMessage()
                 }
+                .focused($textFieldFocused)
             Image(systemName: "mic")
                 .font(.title2)
         }.padding(.horizontal)
@@ -88,8 +99,12 @@ extension ChatView {
         .background(Color("Background"))
     }
     
-    private func sendMessage(text: String){
-        vm.addMessage(text: text)
+    private func sendMessage(){
+        guard !textFieldText.isEmpty else {
+            return
+        }
+        vm.addMessage(text: textFieldText)
+        textFieldText = ""
     }
     
 }
