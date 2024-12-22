@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct User : Decodable{
+public struct User : Decodable, Equatable{
     let id: String
     let name: String
     let image: String
