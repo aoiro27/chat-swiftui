@@ -59,6 +59,9 @@ extension ChatView {
                 .background(Color(uiColor:.secondarySystemBackground))
                 .clipShape(Capsule())
                 .overlay(Image(systemName: "face.smiling").font(.title2).padding(.trailing).foregroundColor(.gray), alignment: .trailing)
+                .onSubmit {
+                    sendMessage(text: textFieldText)
+                }
             Image(systemName: "mic")
                 .font(.title2)
         }.padding(.horizontal)
@@ -82,6 +85,10 @@ extension ChatView {
         }
         .padding()
         .background(Color("Background"))
+    }
+    
+    private func sendMessage(text: String){
+        vm.addMessage(text)
     }
     
 }
