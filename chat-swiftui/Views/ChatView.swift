@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ChatView: View {
+    
+    let vm: ChatViewModel = ChatViewModel()
+    
     @State private var textFieldText: String = ""
     var body: some View {
         VStack(spacing:0) {
@@ -34,12 +37,12 @@ extension ChatView {
         // Message Area
         ScrollView {
             VStack(spacing:0) {
-                ForEach(0..<20) { _ in
-                    MessageRow()
+                ForEach(vm.messages) { message in
+                    MessageRow(message: message)
                 }
             }.padding(.horizontal)
                 .padding(.top, 72)
-        }.background(.cyan)
+        }.background(Color("Background"))
     }
     
     private var inputArea: some View {
@@ -58,8 +61,10 @@ extension ChatView {
                 .overlay(Image(systemName: "face.smiling").font(.title2).padding(.trailing).foregroundColor(.gray), alignment: .trailing)
             Image(systemName: "mic")
                 .font(.title2)
-        }.background(.white)
-            .padding()
+        }.padding(.horizontal)
+            .padding(.vertical,8)
+        .background(Color(uiColor: .systemBackground))
+     
     }
     
     private var navigationArea: some View {
@@ -76,7 +81,7 @@ extension ChatView {
             }.font(.title2)
         }
         .padding()
-        .background(.cyan.opacity(0.9))
+        .background(Color("Background"))
     }
     
 }

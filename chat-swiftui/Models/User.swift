@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+public struct User : Decodable{
+    let id: String
+    let name: String
+    let image: String
+    
+    var isCurrentUser: Bool{
+        self.id == "1"
+    }
+    
+}
