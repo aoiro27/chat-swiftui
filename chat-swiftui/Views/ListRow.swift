@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ListRow: View {
+    
+    var message: String
+
     var body: some View {
         HStack{
             Image("P5_futaba")
@@ -16,7 +19,7 @@ struct ListRow: View {
                 .clipShape(Circle())
             VStack(alignment: .leading) {
                 Text("タイトル").foregroundColor(.primary)
-                Text("最新のメッセージ")
+                Text(message)
                     .font(.footnote)
                     .foregroundColor(Color(UIColor.secondaryLabel))
             }
@@ -29,5 +32,5 @@ struct ListRow: View {
 }
 
 #Preview {
-    ListRow()
+    ListRow(message: "Hello World")
 }

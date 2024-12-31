@@ -10,4 +10,8 @@ import Foundation
 public struct Chat :Decodable, Identifiable{
     public let id : String
     let messages: [Message]
+    var latestMessage: String {
+        guard let message = messages.last else { return "" }
+        return message.text
+    }
 }

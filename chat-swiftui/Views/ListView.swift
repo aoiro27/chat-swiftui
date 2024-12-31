@@ -11,7 +11,7 @@ struct ListView: View {
     
     
     @ObservedObject var vm: ChatViewModel = ChatViewModel()
-    
+ 
     var body: some View {
         NavigationView {
             VStack {
@@ -53,7 +53,7 @@ extension ListView {
                         ChatView(chat: chat)
                             .toolbar(.hidden)
                     } label: {
-                        ListRow()
+                        ListRow(message: chat.latestMessage)
                     }
                 }
             }
