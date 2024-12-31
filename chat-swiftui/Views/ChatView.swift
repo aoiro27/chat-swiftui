@@ -12,6 +12,8 @@ struct ChatView: View {
     @ObservedObject
     var vm: ChatViewModel = ChatViewModel()
     
+    let chat: Chat
+    
     @State private var textFieldText: String = ""
     var body: some View {
         VStack(spacing:0) {
@@ -30,11 +32,16 @@ struct ChatView: View {
     @FocusState
     private var textFieldFocused: Bool
     
+    @Environment(\.dismiss) private var dismiss
+    
 }
 
+
 #Preview {
-    ChatView()
+    let chat = ChatViewModel().chatData[0]
+    ChatView(chat: chat)
 }
+
 
 extension ChatView {
     
@@ -44,7 +51,7 @@ extension ChatView {
             // Message Area
             ScrollView {
                 VStack(spacing:0) {
-                    ForEach(vm.messages) { message in
+                    ForEach(chat.messages) { message in
                         MessageRow(message: message)
                     }
                 }
@@ -96,8 +103,15 @@ extension ChatView {
     private var navigationArea: some View {
         // Navigation Area
         HStack {
-            Image(systemName: "chevron.backward")
-                .font(.title2)
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.backward")
+                    .font(.title2)
+                    .foregroundColor(.primary
+                    )
+            }
+
             Text("タイトル").font(.title2.bold())
             Spacer()
             HStack(spacing: 16){
